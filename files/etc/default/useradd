@@ -1,0 +1,16 @@
+# Default values for useradd(8)
+#
+# The SHELL variable specifies the default login shell on your
+# system.
+# Similar to DSHELL in adduser. However, we use "sh" here because
+# useradd is a low level utility and should be as general
+# as possible
+SHELL=/bin/bash
+GROUP=100
+HOME=/home
+INACTIVE=-1
+SKEL=/etc/skel
+
+# The default expire date
+# EXPIRE=
+

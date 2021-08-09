@@ -1,2 +1,26 @@
 ---
 # tasks file for nignu-base
+- name: Set OS dependent variables.
+  include_vars: "kernel_{{ ansible_facts['system'] }}.yml"
+
+- name: Set linux distribution dependent variables
+  include_vars: "os_{{ ansible_facts['distribution'] }}.yml"
+  when: ansible_facts['system'] == 'Linux'
+
+- name: Include Linux OS distribution playbook
+  include: "os_{{ ansible_facts['distribution'] }}.yml"
+  when: ansible_facts['system'] == 'Linux'
+
+- name: Include ansible_system playbook.
+  include: "kernel_{{ ansible_facts['system'] }}.yml"
+
+- name: include common playbook
+  include: "common.yml"
+
+- name: include motd playbook
+  include: "motd.yml"
+
+- name: Ensure timezone is not set to UTC
+  ansible.builtin.timezone:
+    name: "{{ default_timezone }}"
+
