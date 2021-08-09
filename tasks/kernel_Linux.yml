@@ -1,0 +1,36 @@
+---
+# Linux Specific Stuff
+#- name: Ensure locale exists
+#  ansible.builtin.locale_gen:
+#    name: '{{ default_locale }}'
+#    state: present
+#  when: 
+#    - ansible_facts['os_family'] != 'RedHat'
+#    - ansible_os_distribution != 'Ubuntu'
+
+- name: sshdusers.log ownership
+  ansible.builtin.file:
+    path: /var/log/sshdusers.log
+    owner: root
+    group: adm
+    access_time: preserve
+    modification_time: preserve
+    state: touch
+    mode: '0644'
+
+- name: Ensure sshd_config file
+  ansible.builtin.template:
+    src: "templates/etc/sshd/sshd_config.j2"
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart ssh
+
+- name: Ensure services are started and enabled
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - "{{ services_running }}"

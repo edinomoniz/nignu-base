@@ -1,0 +1,8 @@
+---
+- name: Install common base packages
+  package:
+    name: "{{ common_packages }}"
+
+- name: Install extra_packages
+  package:
+    name: "{{ extra_packages }}"

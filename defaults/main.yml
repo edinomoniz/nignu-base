@@ -1,0 +1,6 @@
+---
+# defaults file for nignu-base
+country_name: "UK"
+default_locale: en_UK.UTF-8
+default_timezone: "Europe/London"
+extra_packages: []

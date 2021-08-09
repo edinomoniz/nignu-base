@@ -1,0 +1,14 @@
+---
+# vars file for nignu-base
+common_packages:
+  - zsh
+  - tcpdump
+  - rsync
+  - git
+  - curl
+  - wget
+  - tmux
+  - lsof
+  - less
+  - vim
+  - figlet
