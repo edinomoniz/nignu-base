@@ -1,0 +1,26 @@
+---
+apt_dependencies:
+  - python3-apt
+  - python3-pip
+  - python3-setuptools
+  - apt-transport-https
+  - apt-utils
+  - ca-certificates
+  - gnupg
+  - lsb-release
+
+distro_packages:
+  - openssh-server
+  - ubuntu-keyring
+  - neovim
+  - rsyslog
+  - ethtool
+  - nfs-common
+  - procps
+  - gawk  
+  - lolcat
+
+services_running:
+  - "{{ ssh_service }}"
+
+ssh_service: ssh

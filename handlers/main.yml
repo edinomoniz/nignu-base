@@ -1,0 +1,14 @@
+---
+# handlers file for nignu-base
+- name: restart ssh
+  ansible.builtin.systemd:
+    name: "{{ ssh_service }}"
+    state: restarted
+    enabled: yes
+
+- name: reload systemd
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: update-grup
+  command: /usr/sbin/update-grub

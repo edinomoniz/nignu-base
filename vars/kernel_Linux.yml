@@ -1,0 +1,4 @@
+---
+root_group: root
+shell: '/bin/bash'
+rsyslogd: 'rsyslog'
